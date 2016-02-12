@@ -1,6 +1,30 @@
-<h2>Sign up for an account!</h2>
-<form method=post action=/signup>
-	<input type=text placeholder="Email" name="user[email]">
-	<br><input type=password placeholder="Password" name="user[password]"></br>
-	<input type=submit value="Sign up">
-</form>
+
+<% if session[:user_id] %>
+<p>you re logged in, this is what u can see:</p>
+<a href="/signout">Sign Out</a>
+
+<% else %>
+  <h2>Sign up for an account!</h2>
+  <form method="post" action="/signup">
+
+    <input type="text" placeholder="Your name" name="user[user_name]">
+
+    <input type="text" placeholder="Email" name="user[email]">
+
+    <br><input type="password" placeholder="Password" name="user[password]"></br>
+
+    <input type="submit" value="Sign up">
+  </form>
+
+  <h2>Log in today!</h2>
+  <form method="post" action="/login">
+
+    <input type="text" placeholder="Email" name=user["email"]>
+
+    <input type="password" placeholder="Password" name="user[password]">
+
+    <input type="submit" value="Sign in">
+
+
+  </form>
+<% end %>

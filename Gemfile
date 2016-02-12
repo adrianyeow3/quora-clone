@@ -25,7 +25,7 @@ gem 'rake'
 gem 'rspec'
 
 #Adding bcrypt
-gem 'bcrypt'
+gem 'bcrypt','~> 3.1.7'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
