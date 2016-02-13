@@ -1,8 +1,9 @@
 
-<% if session[:user_id] %>
+<% if logged_in?%>
 <p>you re logged in, this is what u can see:</p>
 <a href="/signout">Sign Out</a>
-
+  <% lala = current_user %>
+  <p><%= lala.user_name %></p>
 <% else %>
   <h2>Sign up for an account!</h2>
   <form method="post" action="/signup">
@@ -19,7 +20,7 @@
   <h2>Log in today!</h2>
   <form method="post" action="/login">
 
-    <input type="text" placeholder="Email" name=user["email"]>
+    <input type="text" placeholder="Email" name="user[email]">
 
     <input type="password" placeholder="Password" name="user[password]">
 

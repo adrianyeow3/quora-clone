@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :user_name, :presence => true
   validates :email, :presence => true,
-                    :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/ },
+                    :format =>  { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/ },
                     :uniqueness => { :case_sensitive => false }
   # validates :password_digest, :presence => true
 
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   @user = User.find_by(email: email)
 
     if @user && @user.authenticate(password) # means the user email is found in database, and the password is authenticated
-      @user
+    @user
     else
       return false
     end

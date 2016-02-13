@@ -5,7 +5,7 @@ end
 post '/signup' do
 	@user = User.new(params[:user])
   	if @user.save
-      session[:user_id] = @user.id # logging in the user
+      session[:current_user_id] = @user.id # logging in the user
        erb :"static/example"
   	else
       erb :"static/error"
@@ -13,7 +13,9 @@ post '/signup' do
 end
 
 post '/login' do
- if User.authenticate(params[:user][:email], params[:user][:password])  #If it is authenticate
+
+ if @user= User.authenticate(params[:user][:email], params[:user][:password])  #If it is authenticate
+  session[:current_user_id] = @user.id
   redirect '/'
  else
   redirect '/'
@@ -21,7 +23,7 @@ post '/login' do
 end
 
 get '/signout' do
-  session[:user_id] = nil
+  @_current_user = session[:current_user_id] = nil   # Remove the user id from the session
   redirect '/'
 end
 
