@@ -1,9 +1,11 @@
 
 <% if logged_in?%>
-<p>you re logged in, this is what u can see:</p>
+<% user = current_user %>
+<p> Log IN </p>
+<p>Hello, <%=user.user_name %> </p>
 <a href="/signout">Sign Out</a>
-  <% lala = current_user %>
-  <p><%= lala.user_name %></p>
+  <% user = current_user %>
+  <p><a href= "/users/<%=user.id%> "> User Profile </a></p>
 <% else %>
   <h2>Sign up for an account!</h2>
   <form method="post" action="/signup">
@@ -29,3 +31,4 @@
 
   </form>
 <% end %>
+

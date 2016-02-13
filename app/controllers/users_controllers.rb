@@ -27,6 +27,11 @@ get '/signout' do
   redirect '/'
 end
 
+
+get '/users/:id' do
+  erb :"static/user_profile"
+end
+
 # @user = User.find_by(email: params[:email])
 
 #   if @user && @user.authenticate(params[:user][:password]) # means the user email is found in database, and the password is authenticated
