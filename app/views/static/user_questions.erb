@@ -1,13 +1,16 @@
-<table>
-    <tr>
-      <th>Title</th>
-      <th>Subject</th>
-    </tr>
+<h1>Questions</h1>
+<table border="1">
+  <tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Subject</th>
+  </tr>
 
-    <% @user.questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.subject %></td>
-      </tr>
-    <% end %>
+  <% @user.questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.subject %></td>
+    </tr>
+  <% end %>
 </table>

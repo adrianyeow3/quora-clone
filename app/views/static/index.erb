@@ -6,6 +6,7 @@
   <% user = current_user %>
   <p><a href= "/users/<%=user.id%> "> User Profile </a></p>
   <p><a href="questions/new">Create Questions</a></p>
+  <p><a href="/users/questions">View Questions Post</a></p>
 
 <h1>Questions</h1>
 <table border="1">
@@ -15,9 +16,9 @@
     <th>Subject</th>
   </tr>
 
-  <% user.questions.each do |question| %>
+  <% @questions.each do |question| %>
     <tr>
-      <td><%= question.id %></td>
+      <td><a href="/questions/<%= question.id%>"> <%= question.id %> </a></td>
       <td><%= question.title %></td>
       <td><%= question.subject %></td>
     </tr>
@@ -58,7 +59,7 @@
 
   <% @questions.each do |question| %>
     <tr>
-      <td><%= question.id %></td>
+      <td><a href="/questions/<%= question.id%>"> <%= question.id %> </a></td>
       <td><%= question.title %></td>
       <td><%= question.subject %></td>
     </tr>

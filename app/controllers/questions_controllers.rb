@@ -12,3 +12,8 @@ post '/questions' do
   end
 end
 
+get '/questions/:question_id' do
+ @user = current_user
+ @question = Question.find(params[:question_id])
+ erb :"static/question_index"
+end
