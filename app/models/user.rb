@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  has_many :questions
 # attr_accessor :password
   has_secure_password
 

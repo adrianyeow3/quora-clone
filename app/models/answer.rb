@@ -1,3 +1,4 @@
-class Question < ActiveRecord::Base
+class Answer < ActiveRecord::Base
+  belongs_to :user
   validates :text, :presence => true
 end
