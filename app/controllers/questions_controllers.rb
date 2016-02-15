@@ -3,9 +3,10 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new(params[:question].merge(user_id: session[:current_user_id]))
+  @user = current_user
+  @question = Question.new(params[:question].merge(user_id: @user.id))
   if @question.save
-    erb :"static/user_questions"
+   redirect '/users/questions'
   else
     redirect '/questions/new'
   end

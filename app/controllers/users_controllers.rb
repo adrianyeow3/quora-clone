@@ -1,4 +1,5 @@
 get '/' do
+  @questions = Question.all
   erb :"static/index"
 end
 
@@ -6,7 +7,7 @@ post '/signup' do
 	@user = User.new(params[:user])
   	if @user.save
       session[:current_user_id] = @user.id # logging in the user
-       erb :"static/example"
+       redirect '/'
   	else
       erb :"static/error"
   	end
@@ -27,10 +28,16 @@ get '/signout' do
   redirect '/'
 end
 
+get'/users/questions' do
+  @user = current_user
+
+  erb :"static/user_questions"
+end
 
 get '/users/:id' do
   erb :"static/user_profile"
 end
+
 
 # @user = User.find_by(email: params[:email])
 

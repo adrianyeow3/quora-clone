@@ -1,12 +1,29 @@
-
 <% if logged_in?%>
-<% user = current_user %>
-<p> Log IN </p>
-<p>Hello, <%=user.user_name %> </p>
-<a href="/signout">Sign Out</a>
+  <% user = current_user %>
+  <p> Log IN </p>
+  <p>Hello, <%=user.user_name %> </p>
+  <a href="/signout">Sign Out</a>
   <% user = current_user %>
   <p><a href= "/users/<%=user.id%> "> User Profile </a></p>
   <p><a href="questions/new">Create Questions</a></p>
+
+<h1>Questions</h1>
+<table border="1">
+  <tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Subject</th>
+  </tr>
+
+  <% user.questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.subject %></td>
+    </tr>
+  <% end %>
+</table>
+
 <% else %>
   <h2>Sign up for an account!</h2>
   <form method="post" action="/signup">
@@ -31,5 +48,21 @@
 
 
   </form>
-<% end %>
+<h1>Questions</h1>
+<table border="1">
+  <tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Subject</th>
+  </tr>
 
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.subject %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% end %>

@@ -1,3 +1,13 @@
+<table>
+    <tr>
+      <th>Title</th>
+      <th>Subject</th>
+    </tr>
 
-<p> Title <%= @question.title %> </p>
-<p> Subject <%= @question.subject %> </p>
+    <% @user.questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.subject %></td>
+      </tr>
+    <% end %>
+</table>
